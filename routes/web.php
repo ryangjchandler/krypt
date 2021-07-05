@@ -34,4 +34,4 @@ Route::post('/create', function (Request $request) {
     ]);
 
     return redirect()->signedRoute('show', $message);
-})->name('create');
+})->name('create')->middleware('throttle:messageCreation');

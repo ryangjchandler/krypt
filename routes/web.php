@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Message;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/{message:uuid}', function (Message $message) {
+    return view('show', ['message' => $message]);
+})->name('show')->middleware('signed');
+
+Route::post('/create', function (Request $request) {
+    $request->validate([
+        'name' => ['required', 'string'],
+    ]);
+
+    $message = Message::create([
+        'name' => $request->input('name'),
+        'message' => $request->input('message'),
+    ]);
+
+    return redirect()->signedRoute('show', $message);
+})->name('create');

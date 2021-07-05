@@ -26,6 +26,7 @@ Route::get('/{message:uuid}', function (Message $message) {
 Route::post('/create', function (Request $request) {
     $request->validate([
         'name' => ['required', 'string'],
+        'expires_at' => ['nullable', 'date'],
     ]);
 
     $message = Message::create([
@@ -33,5 +34,5 @@ Route::post('/create', function (Request $request) {
         'message' => $request->input('message'),
     ]);
 
-    return redirect()->signedRoute('show', $message);
+    return redirect()->temporarySignedRoute('show', $message->expires_at, $message);
 })->name('create')->middleware('throttle:messageCreation');

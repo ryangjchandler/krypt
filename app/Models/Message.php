@@ -20,6 +20,10 @@ class Message extends Model
     {
         static::creating(function (Message $message) {
             $message->uuid = (string) Str::orderedUuid();
+
+            if (! $message->expires_at) {
+                $message->expires_at = now()->addHour();
+            }
         });
     }
 }

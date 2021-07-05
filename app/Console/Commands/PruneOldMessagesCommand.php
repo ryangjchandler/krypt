@@ -11,7 +11,7 @@ class PruneOldMessagesCommand extends Command
 
     public function handle()
     {
-        $count = Message::whereDate('created_at', '<=', now()->subHour())->delete();
+        $count = Message::whereDate('expires_at', '<', now())->delete();
 
         $this->info('Pruned ' . $count . ' old messages.');
 

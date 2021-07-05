@@ -30,6 +30,6 @@ To install Krypt on your own server, you should:
 
 ## Future Development
 
-* [ ] Support custom expiry times.
+* [x] Support custom expiry times.
 * [ ] Maybe add a tiny bit of styling so that it doesn't hurt your eyes _too_ much.
 * [ ] Password protected messages, as well as `signed` routes. 

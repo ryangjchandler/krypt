@@ -14,6 +14,8 @@ It's essentially a secret-sharing application that is hyper minimalistic. There'
 2. Once you've created the note, you'll be redirected to a new `/{uuid}?signature={signature}` url. Use this URL to share the note with other people. It's a signed URL so if the signature or URL is tampered with, the request won't work and the user will be shown an error. 
 3. Your note will be deleted after **1 hour**, so any attempt to view the URL you previously shared will result in a 404.
 
+> The `/create` route is used by the `<form>` to create the message. This has a rate limit of 3 submissions per 60 seconds (1 minute) to prevent spam attacks on the creation endpoint. The rate limit uses the user's IP address to determine if the request is unique or not.
+
 ## Installing on your own server
 
 To install Krypt on your own server, you should:

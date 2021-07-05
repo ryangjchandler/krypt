@@ -27,6 +27,7 @@ Route::post('/create', function (Request $request) {
     $request->validate([
         'name' => ['required', 'string'],
         'expires_at' => ['nullable', 'date'],
+        'message' => ['required', 'string'],
     ]);
 
     $message = Message::create([

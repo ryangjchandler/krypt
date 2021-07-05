@@ -32,6 +32,7 @@ Route::post('/create', function (Request $request) {
 
     $message = Message::create([
         'name' => $request->input('name'),
+        'expires_at' => $request->input('expires_at'),
         'message' => $request->input('message'),
     ]);
 

@@ -13,7 +13,8 @@ class Message extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'message' => 'encrypted'
+        'message' => 'encrypted',
+        'expires_at' => 'datetime',
     ];
 
     public static function booted()

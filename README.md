@@ -14,6 +14,18 @@ It's essentially a secret-sharing application that is hyper minimalistic. There'
 2. Once you've created the note, you'll be redirected to a new `/{uuid}?signature={signature}` url. Use this URL to share the note with other people. It's a signed URL so if the signature or URL is tampered with, the request won't work and the user will be shown an error. 
 3. Your note will be deleted after **1 hour**, so any attempt to view the URL you previously shared will result in a 404.
 
+## Installing on your own server
+
+To install Krypt on your own server, you should:
+
+1. Fork this repository to your own GitHub account.
+2. Deploy the application like any ordinary Laravel application (Why not give [Ploi (referral link)](https://ploi.io/register?referrer=7lH81uCGeuTg45Otse3p) a go?).
+    * Create a database.
+    * Copy the environment file.
+    * Generate an `APP_KEY` using `artisan key:generate`.
+    * Migrate the database using `artisan migrate`.
+3. Follow steps above to use Krypt. 
+
 ## Future Development
 
 * [ ] Support custom expiry times.
